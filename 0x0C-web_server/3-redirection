@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Configures a new ubuntu machine by installing
+# Configur new ubuntu machine by installing
 # Nginx where it should be listening on port 80
-# Serve a page that would return a Hello World string
+# Serves page that would return Hello World string
 #
 
 
