@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Installs HAProxy with the following configurations:
+# - Enables management via the init script.
+# - Distributes requests using a round-robin algorithm.
+
+sudo apt-get install -y haproxy
+
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+cat <<EOT | sudo tee -a /etc/haproxy/haproxy.cfg
+frontend garretakpale.tech
+    timeout client  30000
+    bind 0:80
+    default_backend garretakpale.tech_backend
+
+backend garretakpale.tech_backend
+    timeout connect  3000
+    timeout server  30000
+    balance roundrobin
+    server 298443-web-01 100.26.237.127:80 check
+    server 228560-web-02 54.174.71.218:80 check
+EOT
+
+sudo service haproxy restart
