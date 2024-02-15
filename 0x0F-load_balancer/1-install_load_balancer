@@ -17,7 +17,7 @@ backend garretakpale.tech_backend
     timeout connect  3000
     timeout server  30000
     balance roundrobin
-    server 298443-web-01 100.26.237.127:80 check
+    server 298443-web-01 52.91.118.129:80 check
     server 298443-web-02 54.174.71.218:80 check
 EOT
 
